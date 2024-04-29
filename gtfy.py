@@ -7,6 +7,7 @@ import requests
 load_dotenv()
 
 ntfy_host = os.environ["NTFY_HOST"]
+ntfy_token = os.environ["NTFY_TOKEN"]
 gotify_host = os.environ['GOTIFY_HOST']
 gotify_token = os.environ['GOTIFY_TOKEN']
 
@@ -16,6 +17,7 @@ def on_message(ws, message):
     querystring = {"title": msg['title'], "message": msg['message']}
     headers = {
         "Priority": "default",
+        "Authorization": "Bearer " + ntfy_token
     }
     response = requests.request(
         "POST", ntfy_host, headers=headers, params=querystring)

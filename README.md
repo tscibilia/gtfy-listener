@@ -23,8 +23,9 @@ touch .env
 - Env File `.env`
 
 ```sh
-NTFY = "<NTFY Push server URL>"
-GOTIFY_HOST = "<Python Cricket score API>"
+NTFY_HOST = "<NTFY Push server URL>"
+NTFY_TOKEN= "<NTFY CLIENT TOKEN>"
+GOTIFY_HOST = "<Gotify server URL>"
 GOTIFY_TOKEN = "<GOTIFY CLIENT TOKEN>"
 
 ## test
@@ -46,6 +47,7 @@ RUN pip3 install requests python-dotenv websocket-client
 ENV GOTIFY_HOST=push.example.com
 ENV GOTIFY_TOKEN=XXXXXXXXXXXX
 ENV NTFY_HOST=https://ntfy.sh/gotify
+ENV NTFY_TOKEN=XXXXXXXXXXXX
 COPY gtfy.py /usr/bin
 CMD ["python3", "/usr/bin/gtfy.py"]
 ```
